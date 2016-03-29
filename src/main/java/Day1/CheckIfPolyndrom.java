@@ -9,6 +9,16 @@ import org.junit.Test;
  */
 public class CheckIfPolyndrom {
 
+    private boolean isPolyndromRecursion(String string) {
+        if (string.length() == 0 || string.length() == 1)
+            return true;
+
+        if (string.charAt(0) == string.charAt(string.length() - 1))
+            return isPolyndromRecursion(string.substring(1, string.length() - 1));
+
+        return false;
+    }
+
     public static String reverse(String string){
         String str =  "";
         for(int i = string.length() - 1; i >= 0; i--){
