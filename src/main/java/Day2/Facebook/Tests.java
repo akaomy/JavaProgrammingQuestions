@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static FaceBook.Actions.*;
+import static Day2.Facebook.Actions.*;
 import static junit.framework.TestCase.assertEquals;
 
 /**
