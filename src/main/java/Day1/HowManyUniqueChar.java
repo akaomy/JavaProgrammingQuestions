@@ -18,28 +18,27 @@ public class HowManyUniqueChar {
 
     public void howManyEachCharInSent(String string) {
 
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> result = new HashMap<Character, Integer>();
 
         string = string.toLowerCase();
         string = string.replace(" ", "");
 
         for (char each : string.toCharArray()) {
-            if (map.containsKey(each)) {
-                int value = map.get(each);
-                map.put(each, (value + 1));
+            if (result.containsKey(each)) {
+                int value = result.get(each);
+                result.put(each, (value + 1));
             } else {
-                map.put(each, 1);
+                result.put(each, 1);
             }
         }
 
-        printResult(map);
+        printResult(result);
     }
 
     @Test
     public void test001(){
         String string = "The quick brown fox jumps over the lazy dog";
         howManyEachCharInSent(string);
-
     }
 
 }
