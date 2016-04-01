@@ -1,5 +1,6 @@
 package Day1;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class HowManyUniqueChar {
         }
     }
 
-    public void howManyEachCharInSent(String input) {
+    public HashMap<Character, Integer> howManyEachCharInSent(String input) {
 
         HashMap<Character, Integer> result = new HashMap<Character, Integer>(); //declare result variable
 
@@ -32,13 +33,31 @@ public class HowManyUniqueChar {
             }
         }
 
-        printResult(result); //use existing method to printout result
+        return result;
+
+
     }
 
     @Test
     public void test001(){
         String string = "The quick brown fox jumps over the lazy dog";
         howManyEachCharInSent(string);
+    }
+
+    @Test
+    public void test002(){
+        String inputString = "abc"; //string using for test
+
+        HashMap<Character, Integer> expectedResult = new HashMap<>(); //declaring variable for expected result
+        expectedResult.put('a', 1);
+        expectedResult.put('b', 1);
+        expectedResult.put('c', 1);//adding values to result
+
+        HashMap<Character, Integer> actualResult = howManyEachCharInSent(inputString); //storing actual result of our method to variable
+
+        Assert.assertEquals(expectedResult, actualResult); //if expectedResult will be not equal actualResult, it throw an exeption
+
+        printResult(actualResult); //use existing method to printout result
     }
 
 }
