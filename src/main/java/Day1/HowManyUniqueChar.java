@@ -10,9 +10,14 @@ import java.util.Map;
  */
 public class HowManyUniqueChar {
 
-    @Test
-    public void howManyEachCharInSent() {
-        String string = "The quick brown fox jumps over the lazy dog";
+    public void printResult(HashMap<Character, Integer> map){
+        for (Map.Entry<Character, Integer> each : map.entrySet()){
+            System.out.println(each);
+        }
+    }
+
+    public void howManyEachCharInSent(String string) {
+
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 
         string = string.toLowerCase();
@@ -27,9 +32,14 @@ public class HowManyUniqueChar {
             }
         }
 
-        for (Map.Entry<Character, Integer> each : map.entrySet()){
-            System.out.println(each);
-        }
+        printResult(map);
+    }
+
+    @Test
+    public void test001(){
+        String string = "The quick brown fox jumps over the lazy dog";
+        howManyEachCharInSent(string);
+
     }
 
 }
