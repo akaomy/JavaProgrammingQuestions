@@ -6,7 +6,7 @@ Java core:
 * Arrays, HashMaps, Stacks
 * Using methods Access level modifiers (public, private, protected)
 
-Простые задания:
+Warmup Problems:
 * Reverse string
 * How many unique characters in a string
 * Count how many words in a sentence
@@ -15,7 +15,7 @@ Java core:
 * FizzBuzz
 * Max Difference in Array
 
-Задания повышенной сложности:
+Advanced:
 * Solve printing of Fibonacci numbers using recursion (forward and back)
 * Understanding of algorithm complexity (Big - o)
 * Excel spreadsheet column name print out based on integer input
