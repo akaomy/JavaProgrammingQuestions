@@ -49,7 +49,6 @@ public class HowManyWords {
 
     }
 
-
     @Test
     public void testCountWords001() {
         String str = "Today is a very sunny day. Sunny days are very nice.";
