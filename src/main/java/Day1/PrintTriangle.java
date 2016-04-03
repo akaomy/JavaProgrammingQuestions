@@ -37,7 +37,7 @@ public class PrintTriangle {
 
     public static void printDots(int dots) {
         for (int i = 0; i <= dots; i++) { ///depends on the dots value,
-            System.out.print(". "); //  we printing out amount of dots
+            System.out.print("* "); //  we printing out amount of dots
         }
 
         System.out.print("\n"); //after each level of triangle we need to start new line
