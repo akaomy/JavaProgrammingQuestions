@@ -7,20 +7,22 @@ import org.junit.Test;
  */
 public class MaxDifference {
 
-    static int maxDifference(int[] a) {
+    static int maxDifference(int[] arrayOfIntegers) {
         int result = 0;
 
-        if(a.length == 0){
+        if(arrayOfIntegers.length == 0){
             result = 0;
         }
 
-        if(a.length == 1){
-            result = a[0];
+        if(arrayOfIntegers.length == 1){
+            result = arrayOfIntegers[0];
         }
 
-        if(a.length > 1){
-            int minBeforeMax = findMinBeforeMax(a, findIndexOfMax(a));
-            result = a[findIndexOfMax(a)] - minBeforeMax;
+        if(arrayOfIntegers.length > 1){
+            int indexOfMax = findIndexOfMax(arrayOfIntegers);
+
+            int minBeforeMax = findMinBeforeMax(arrayOfIntegers, indexOfMax);
+            result = arrayOfIntegers[indexOfMax] - minBeforeMax;
         }
 
         return result;

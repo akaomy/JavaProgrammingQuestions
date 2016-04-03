@@ -21,7 +21,8 @@ public class ExcelSpreadsheat {
 
         for (String each : alphabet) {
             hashMap.put(i, each);
-            i++;}
+            i++;
+        }
 
         return hashMap;
     }
