@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class ExcelSpreadsheat {
 
     public static final String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-
+    private static HashMap<Integer, String> hashMap = createMap(alphabet);
 
     public static HashMap<Integer, String> createMap(String[] array) {
 
@@ -51,8 +51,7 @@ public class ExcelSpreadsheat {
 
                 result.push(letterNumber); //pushing calculated number to result stack
             }
-        }
-        else {
+        } else {
             throw new Exception("out of bound");
         }
 
@@ -61,9 +60,6 @@ public class ExcelSpreadsheat {
     }
 
     public static String convertToABC(Stack<Integer> stack) {
-
-        HashMap<Integer, String> hashMap = createMap(alphabet);
-
         String result = "";
         for (int each : stack) {
             result = hashMap.get(each) + result;
@@ -139,5 +135,4 @@ public class ExcelSpreadsheat {
             assertTrue(e.toString().contains("out of bound"));
         }
     }
-
 }
