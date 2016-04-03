@@ -16,11 +16,12 @@ public class ExcelSpreadsheat {
 
 
     public static HashMap<Integer, String> createMap(String[] array) {
-        HashMap<Integer, String> hashMap = new HashMap<>();
+
+        HashMap<Integer, String> hashMap = new HashMap<>(); //declare HashMap
         int i = 1;
 
-        for (String each : alphabet) {
-            hashMap.put(i, each);
+        for (String each : alphabet) { //traversing through array of chars
+            hashMap.put(i, each); //putting each char to map with key 1...26
             i++;
         }
 
@@ -28,35 +29,38 @@ public class ExcelSpreadsheat {
     }
 
 
-    public static Stack format(int num) throws Exception {
+    public static Stack digitalFormat(int num) throws Exception {
 
         Stack<Integer> result = new Stack<>();
 
-        int letternum;
+        int letterNumber;
 
         if (num > 0) {
             while (num > 0) {
-                letternum = num % 26;
-                num = (num - letternum) / 26;
+                letterNumber = num % 26; // number of letter equals the remainder of the division
 
-                if (letternum == 0) {
-                    letternum = 26;
+                num = (num - letterNumber) / 26; // after calculation first letter we need to substitute it and devide by 26
+
+                if (letterNumber == 0) { //one of the boundaries,when the remainder of the division equal 0, means that letter is Z
+                    letterNumber = 26;
                 }
 
-                if (letternum == 26) {
-                    num = num - 1;
+                if (letterNumber == 26) { //another boundary, when remainder equals 26;
+                    num = num - 1; //need to subtract 1 to finish iteration
                 }
 
-                result.push(letternum);
+                result.push(letterNumber); //pushing calculated number to result stack
             }
         }
-        else {throw new Exception("out of bound");}
+        else {
+            throw new Exception("out of bound");
+        }
 
         return result;
 
     }
 
-    public static String convert(Stack<Integer> stack) {
+    public static String convertToABC(Stack<Integer> stack) {
 
         HashMap<Integer, String> hashMap = createMap(alphabet);
 
@@ -74,7 +78,9 @@ public class ExcelSpreadsheat {
         int n = 18877;
 
         for (int i = 1; i < n; i++) {
-            System.out.println((format(i).toString()) + "    " + convert(format(i)));
+            Stack<Integer> convertedDigit = digitalFormat(i);
+
+            System.out.println((convertedDigit.toString()) + "    " + convertToABC(convertedDigit));
         }
     }
 
@@ -83,15 +89,15 @@ public class ExcelSpreadsheat {
 
         int n = 1844;
 
-        assertTrue("ERROR", convert(format(n)).equals("BRX"));
+        assertTrue("ERROR", convertToABC(digitalFormat(n)).equals("BRX"));
     }
 
     @Test
     public void test002() throws Exception {
 
-        int n = 26;
+        int n = 27;
 
-        assertTrue("ERROR", convert(format(n)).equals("Z"));
+        assertTrue("ERROR", convertToABC(digitalFormat(n)).equals("AA"));
     }
 
     @Test
@@ -99,7 +105,7 @@ public class ExcelSpreadsheat {
 
         int n = 703;
 
-        assertTrue("ERROR " + convert(format(n)), convert(format(n)).equals("AAA"));
+        assertTrue("ERROR " + convertToABC(digitalFormat(n)), convertToABC(digitalFormat(n)).equals("AAA"));
     }
 
     @Test
@@ -107,7 +113,7 @@ public class ExcelSpreadsheat {
 
         int n = 16384;
 
-        assertTrue("ERROR " + convert(format(n)), convert(format(n)).equals("XFD"));
+        assertTrue("ERROR " + convertToABC(digitalFormat(n)), convertToABC(digitalFormat(n)).equals("XFD"));
     }
 
     @Test
@@ -116,7 +122,7 @@ public class ExcelSpreadsheat {
         int n = 0;
 
         try {
-            convert(format(n));
+            convertToABC(digitalFormat(n));
         } catch (Exception e) {
             assertTrue(e.toString().contains("out of bound"));
         }
@@ -128,7 +134,7 @@ public class ExcelSpreadsheat {
         int n = -100;
 
         try {
-            convert(format(n));
+            convertToABC(digitalFormat(n));
         } catch (Exception e) {
             assertTrue(e.toString().contains("out of bound"));
         }
