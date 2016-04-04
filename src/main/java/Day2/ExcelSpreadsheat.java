@@ -73,7 +73,7 @@ public class ExcelSpreadsheat {
 
         int n = 18877;
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             Stack<Integer> convertedDigit = digitalFormat(i);
 
             System.out.println((convertedDigit.toString()) + "    " + convertToABC(convertedDigit));
