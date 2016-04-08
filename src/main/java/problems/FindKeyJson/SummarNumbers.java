@@ -6,13 +6,42 @@ import org.junit.Test;
  */
 public class SummarNumbers {
 
+    public static int sumOfNumbers2(String inputString){
+        int sum = 0;
+        String digit = "";
+
+        int length = inputString.length();
+
+        for(int i = 0; i < length; i++)
+        {
+            char each = inputString.charAt(i);
+
+            if(Character.isDigit(each) || each == '-'){
+                digit += each;
+            } else {
+                if (!digit.isEmpty()) {
+                    sum+= Integer.parseInt(digit);
+                    digit = "";
+                }
+            }
+        }
+
+        if (!digit.isEmpty()) {
+            sum+= Integer.parseInt(digit);
+        }
+
+        return sum;
+    }
+
+
     public static int sumOfNumbers(String inputString){
 
-        inputString = inputString.replaceAll("\\W", " ");
+       // inputString = inputString.replaceAll("\\W", " ");
 
         int sum = 0;
 
-        String[] arrayOfStrings = inputString.split("[^\\d.]");
+
+        String[] arrayOfStrings = inputString.split("(?:(?!-))\\D");//split("[^\\d.]");
 
         for(String each: arrayOfStrings){
             if(!each.equals("") && each != null) {
@@ -27,17 +56,17 @@ public class SummarNumbers {
     @Test
     public void test0001(){
 
-       String inputSting = "1a2b3c";
+       String inputString = "1a2b3c";
 
-        Assert.assertEquals(6, sumOfNumbers(inputSting));
+        Assert.assertEquals(6, sumOfNumbers2(inputString));
     }
 
     @Test
     public void test0002(){
 
-        String inputSting = "123ab!45c";
+        String inputString = "123ab!45c";
 
-        Assert.assertEquals(168, sumOfNumbers(inputSting));
+        Assert.assertEquals(168, sumOfNumbers2(inputString));
     }
 
     @Test
@@ -45,7 +74,7 @@ public class SummarNumbers {
 
         String inputSting = "abcdef";
 
-        Assert.assertEquals(0, sumOfNumbers(inputSting));
+        Assert.assertEquals(0, sumOfNumbers2(inputSting));
     }
 
     @Test
@@ -53,7 +82,7 @@ public class SummarNumbers {
 
         String inputSting = "0123.4";
 
-        Assert.assertEquals(127, sumOfNumbers(inputSting));
+        Assert.assertEquals(127, sumOfNumbers2(inputSting));
     }
 
     @Test
@@ -61,6 +90,14 @@ public class SummarNumbers {
 
         String inputSting = "dFD$#23+++12@#T1234;/.,10";
 
-        Assert.assertEquals(1279, sumOfNumbers(inputSting));
+        Assert.assertEquals(1279, sumOfNumbers2(inputSting));
+    }
+
+    @Test
+    public void test0006(){
+
+        String inputSting = "125a-5";
+
+        Assert.assertEquals(120, sumOfNumbers2(inputSting));
     }
 }
