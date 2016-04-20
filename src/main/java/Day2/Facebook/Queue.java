@@ -5,31 +5,36 @@ package Day2.Facebook;
  */
 public class Queue {
 
-    Friend first, last;
+    //one of the implementation of a queue
 
-    public void enqueue(Friend friend){
-        if(first == null)
+    Friend first, last; //field of the class, where we saying that members of this queue will be friends
+
+
+    public void enqueue(Friend friend){ //mechanism of adding a friend to a queue
+
+        if(first == null)  // when nobody in the queue
         {
-            first = friend;
-            last = first;
+            first = friend; //friend(parameter of this method) becomes first
+            last = first; //and last as well
         }
-        else
+        else    //when somebody already in the queue
             {
-                last.next = friend;
-                last = friend;
+                last.next = friend; //he becomes next after last
+                last = friend; //and last in the queue
             }
     }
 
-    public Friend dequeue(){
-        if(first == null)
+    public Friend dequeue(){ //mechanism of removing a friend from a queue
+
+        if(first == null) // when nobody in the queue
         {
-            return null;
+            return null; //nothing to remove then
         }
-        else
+        else // if somebody there
         {
-            Friend temp = new Friend(first.name, first.friends);
-            first = first.next;
-            return temp;
+            Friend temp = new Friend(first.name, first.friends); //storing first friend in temp object
+            first = first.next;                                  //next friend of first becomes first
+            return temp;                                      //and returning temp (which was first)
         }
     }
 }
